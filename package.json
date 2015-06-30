@@ -2,14 +2,18 @@
   "name": "grunt-demo",
   "version": "1.0.0",
   "description": "",
-  "main": "demo.js",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-cssmin": "^0.12.3",
+    "grunt-contrib-less": "^1.0.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/iProtime/grunt-demo.git"
-  },
+  "repository": {},
   "author": "",
   "license": "ISC",
   "bugs": {
