@@ -4,13 +4,6 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    wiredep: {
-      aaa: {
-        src: [
-          'dist/index.html'
-        ]
-      }
-    },
     copy: {
       dev: {
         files: [
@@ -21,20 +14,49 @@ module.exports = function(grunt) {
             flatten: true, 
             dest: 'dist/', 
             filter: 'isFile'
+          },
+          {
+            expand: true, 
+            src: [
+              'src/**/*.js',
+              'bower_components/jquery/dist/jquery.min.js'
+            ], 
+            flatten: true, 
+            dest: 'dist/js', 
+            filter: 'isFile'
           }
         ],
       },
+    },
+    less: {
+      development: {
+        files: {
+          "dist/css/style.css": "src/less/main.less"
+        }
+      }
+    },
+    cssmin: {
+      target: {
+        files: [{
+          expand: true,
+          cwd: 'dist/css',
+          src: ['*.css', '!*.min.css'],
+          dest: 'dist/css',
+          ext: '.min.css'
+        }]
+      }
     }
 
     
   });
 
   // Load the plugin that provides the "uglify" task.
-  // grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-wiredep');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
 
   // Default task(s).
-  grunt.registerTask('default', ['copy','wiredep']);
+  grunt.registerTask('default', ['copy','less']);
+  grunt.registerTask('deploy', ['default','cssmin']);
 
 };
