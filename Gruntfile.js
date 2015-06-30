@@ -7,9 +7,23 @@ module.exports = function(grunt) {
     wiredep: {
       aaa: {
         src: [
-          'src/index.html'
+          'dist/index.html'
         ]
       }
+    },
+    copy: {
+      dev: {
+        files: [
+          // includes files within path
+          {
+            expand: true, 
+            src: ['src/index.html'], 
+            flatten: true, 
+            dest: 'dist/', 
+            filter: 'isFile'
+          }
+        ],
+      },
     }
 
     
@@ -18,8 +32,9 @@ module.exports = function(grunt) {
   // Load the plugin that provides the "uglify" task.
   // grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-wiredep');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task(s).
-  grunt.registerTask('default', ['wiredep']);
+  grunt.registerTask('default', ['copy'，'wiredep']);
 
 };

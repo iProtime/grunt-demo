@@ -3,17 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "grunt": "^0.4.5",
+    "grunt-contrib-copy": "^0.8.0",
     "grunt-wiredep": "^2.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-  },
+  "repository": {},
   "author": "",
   "license": "ISC",
   "bugs": {
